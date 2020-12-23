@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "552695047097",
+    "firebase_url": "https://actor-app---kapa-it.firebaseio.com",
+    "project_id": "actor-app---kapa-it",
+    "storage_bucket": "actor-app---kapa-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552695047097:android:120b29f692d725dd9bcc68",
+        "android_client_info": {
+          "package_name": "com.example.actor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDbsL8tRkFzlyvLkTL3J_7yH_tJRumkg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552695047097:android:70e9546b642661239bcc68",
+        "android_client_info": {
+          "package_name": "com.example.actorway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDbsL8tRkFzlyvLkTL3J_7yH_tJRumkg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552695047097:android:02c7f028ed5949839bcc68",
+        "android_client_info": {
+          "package_name": "com.kapait.faa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDbsL8tRkFzlyvLkTL3J_7yH_tJRumkg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552695047097-ipin0m8qv6ne0g4er733o2rhajv29bgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
