@@ -56,9 +56,9 @@ class ForgotPasswordFragment : Fragment() {
 
     private fun goToLoginFragment() {
         val loginFragment: Fragment = LoginFragment()
-        fragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, loginFragment)
-            ?.commit()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, loginFragment)
+            .commit()
     }
 
 }

@@ -90,8 +90,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToFragment(fragment: Fragment) {
-        fragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, fragment)
-            ?.commit()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }

@@ -51,9 +51,9 @@ class RegisterFragment : Fragment() {
 
         // Реализация кнопки LOGIN
         loginFromRegisterBtn.setOnClickListener {
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, loginFragment)
-                ?.commit()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, loginFragment)
+                .commit()
         }
 
         return v
