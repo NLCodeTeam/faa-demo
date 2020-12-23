@@ -3,4 +3,61 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="text_size_year">24sp</dimen>
+    <dimen name="text_size_date">40sp</dimen>
+    <dimen name="text_size_wheel_content">18sp</dimen>
+
+    <dimen name="default_margin_padding_x_small">2dp</dimen>
+    <dimen name="default_margin_padding">8dp</dimen>
+    <dimen name="default_margin_padding_large">16dp</dimen>
+
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="top_container_padding">16dp</dimen>
+    <dimen name="dialog_margin">16dp</dimen>
+    <dimen name="wheel_height">200dp</dimen>
+    <dimen name="wheel_horizontal_padding">24dp</dimen>
+    <dimen name="wheel_vertical_padding">80dp</dimen>
+    <dimen name="wheel_day_width">40dp</dimen>
+    <dimen name="wheel_year_width">64dp</dimen>
+    <dimen name="highlight_height">40dp</dimen>
+    <dimen name="translucent_height">64dp</dimen>
+
+    <dimen name="paddingXXXS">2dp</dimen>
+    <dimen name="paddingXXS">4dp</dimen>
+    <dimen name="paddingXS">8dp</dimen>
+    <dimen name="paddingSM">12dp</dimen>
+    <dimen name="paddingMD">16dp</dimen>
+    <dimen name="paddingLG">24dp</dimen>
+    <dimen name="paddingXL">30dp</dimen>
+    <dimen name="paddingXXL">36dp</dimen>
+    <dimen name="paddingXXXL">44dp</dimen>
+    <dimen name="paddingXXXXL">55dp</dimen>
+    <dimen name="paddingLogo">60dp</dimen>
+
+    <dimen name="txtSizeXXXS">8sp</dimen>
+    <dimen name="txtSizeXXS">10sp</dimen>
+    <dimen name="txtSizeXS">12sp</dimen>
+    <dimen name="txtSizeSM">14sp</dimen>
+    <dimen name="txtSizeMD">16sp</dimen>
+    <dimen name="txtSizeL">18sp</dimen>
+    <dimen name="txtSizeLG">20sp</dimen>
+    <dimen name="txtSizeXL">26sp</dimen>
+    <dimen name="txtSizeXXL">32sp</dimen>
+    <dimen name="txtSizeXXXL">36sp</dimen>
+
+    <dimen name="smallImageSize">60dp</dimen>
+    <dimen name="orderMapMarkerSize">35dp</dimen>
+    <dimen name="baseImageSize">110dp</dimen>
+    <dimen name="baseRadius">10dp</dimen>
+    <dimen name="app_bar_height">100dp</dimen>
+    <dimen name="markerOrderImageSize">46dp</dimen>
+    <dimen name="markerOrderTopViewHeight">64dp</dimen>
+
+    <dimen name="topScrollingContainerMargin">98dp</dimen>
+
+    <dimen name="profileUserAppBarHeight">278dp</dimen>
+    <dimen name="profileOrganizationAppBarHeight">374dp</dimen>
+
+    <integer name="maxLengthNumberInput">7</integer>
 </resources>
