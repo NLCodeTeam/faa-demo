@@ -2,8 +2,8 @@ package com.kapait.faa.ui.login
 
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.kapait.faa.MainActivity
 import com.kapait.faa.R
@@ -73,6 +74,13 @@ class LoginFragment : Fragment() {
             goToFragment(forgotPasswordFragment)
         }
 
+        context?.getEmail()?.run {
+            emailLogin.setText(this)
+        }
+
+        context?.getPassword()?.run {
+            passwordLogin.setText(this)
+        }
 
         return v
     }
@@ -81,7 +89,13 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val mainActivity = Intent(context, MainActivity::class.java)
+                    context?.run {
+                        email.saveEmail(this)
+                        password.savePassword(this)
+                    }
+                    val mainActivity = Intent(context, MainActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    }
                     startActivity(mainActivity)
                 } else {
                     Toast.makeText(context, "Error" + task.exception, Toast.LENGTH_LONG).show()

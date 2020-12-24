@@ -1,4 +1,4 @@
-package com.kapait.faa.ui.notifications
+package com.kapait.faa.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

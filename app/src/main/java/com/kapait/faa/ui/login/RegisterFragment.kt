@@ -63,8 +63,14 @@ class RegisterFragment : Fragment() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    context?.run {
+                        email.saveEmail(this)
+                        password.savePassword(this)
+                    }
                     Log.e("Task Message", "Successful..")
-                    val mainActivity = Intent(context, MainActivity::class.java)
+                    val mainActivity = Intent(context, MainActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    }
                     startActivity(mainActivity)
                 } else {
                     Log.e("Task Message", "Failed " + task.exception)

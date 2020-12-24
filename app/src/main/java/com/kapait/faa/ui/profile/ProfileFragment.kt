@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.kapait.faa.R
 import com.kapait.faa.databinding.FragmentProfileBinding
 import com.kapait.faa.ui.common.material_date_picker.SlideDatePickerDialog
@@ -15,6 +16,7 @@ import java.util.*
 class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
 
     private var profileBinding: FragmentProfileBinding? = null
+    private lateinit var profileViewModel: ProfileViewModel
     private val binding
         get() = profileBinding!!
 
@@ -24,6 +26,7 @@ class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
         savedInstanceState: Bundle?
     ): View {
         profileBinding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         return binding.root
     }
 
