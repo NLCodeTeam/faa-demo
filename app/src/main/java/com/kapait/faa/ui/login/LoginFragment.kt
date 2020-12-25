@@ -13,13 +13,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.kapait.faa.FaaApplication
 import com.kapait.faa.MainActivity
 import com.kapait.faa.R
+import com.kapait.faa.models.User
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private var userDataExist: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +62,7 @@ class LoginFragment : Fragment() {
             auth.signInAnonymously()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        task.result
                         startActivity(mainActivity)
                     }
                 }
@@ -74,12 +78,11 @@ class LoginFragment : Fragment() {
             goToFragment(forgotPasswordFragment)
         }
 
-        context?.getEmail()?.run {
-            emailLogin.setText(this)
-        }
-
-        context?.getPassword()?.run {
-            passwordLogin.setText(this)
+        val user = FaaApplication.appComponent.getDatabase().loadUser()
+        user?.run {
+            userDataExist = true
+            emailLogin.setText(user.login)
+            passwordLogin.setText(user.password)
         }
 
         return v
@@ -89,10 +92,10 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    context?.run {
-                        email.saveEmail(this)
-                        password.savePassword(this)
-                    }
+                        if (!userDataExist)
+                            (activity as LoginActivity).saveUser(email, password)
+
+
                     val mainActivity = Intent(context, MainActivity::class.java).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     }
@@ -102,6 +105,8 @@ class LoginFragment : Fragment() {
                 }
             }
     }
+
+
 
     private fun goToFragment(fragment: Fragment) {
         parentFragmentManager.beginTransaction()

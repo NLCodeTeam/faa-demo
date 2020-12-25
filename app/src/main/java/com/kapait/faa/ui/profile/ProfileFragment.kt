@@ -7,15 +7,21 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kapait.faa.R
 import com.kapait.faa.databinding.FragmentProfileBinding
+import com.kapait.faa.models.User
 import com.kapait.faa.ui.common.material_date_picker.SlideDatePickerDialog
 import com.kapait.faa.ui.common.material_date_picker.callback.SlideDatePickerDialogCallback
-import java.util.*
+import com.kapait.faa.ui.profile.adapter.CharacteristicOptionsAdapter
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
 
     private var profileBinding: FragmentProfileBinding? = null
+    private var userLogined = true
     private lateinit var profileViewModel: ProfileViewModel
     private val binding
         get() = profileBinding!!
@@ -32,7 +38,35 @@ class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadUser()
         initUI()
+        profileViewModel.loadUserLiveData.observe(viewLifecycleOwner, ::userLoaded)
+        profileViewModel.errorLiveData.observe(viewLifecycleOwner,::handleError)
+    }
+
+    private fun loadUser() {
+        profileViewModel.loadProfile()
+    }
+
+    private fun handleError(unit: Unit?) {
+        userLogined = false
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, ErrorFragment())
+            .commit()
+    }
+
+    private fun userLoaded(user: User?) {
+        user?.run {
+            binding.fullNameEditText.setText(fullName)
+            binding.emailEditText.setText(userEmail)
+            binding.dobHolder.setText(dob)
+            binding.country.optionsSpinner.selectedItem
+            binding.height.optionsSpinner.selectedIndex = height
+            binding.weight.optionsSpinner.selectedIndex = weight
+            binding.bodyType.optionsSpinner.selectedIndex = bodyType
+            binding.hairColor.optionsSpinner.selectedIndex = hairColor
+            binding.eyeColor.optionsSpinner.selectedIndex = eyeColor
+        }
     }
 
     private fun initUI() {
@@ -42,16 +76,31 @@ class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
         binding.bodyType.characteristicName.text = getString(R.string.body_type)
         binding.hairColor.characteristicName.text = getString(R.string.hair_color)
         binding.eyeColor.characteristicName.text = getString(R.string.eye_color)
-        binding.skills.characteristicName.text = getString(R.string.skills)
-        fillOptionsSpinner()
+        binding.skills.characteristicsName.text = getString(R.string.skills)
         binding.dobHolderContainer.setEndIconOnClickListener { showDatePicker() }
+        fillOptionsSpinner()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        val clickListener: (String) -> Unit = { profileViewModel.addSelectedSkill(it) }
+        val skillsAdapter = CharacteristicOptionsAdapter(clickListener).apply {
+            setSkills(getArrayFromResources(R.array.skills_options))
+            setSelectedSkills(profileViewModel.getSelectedSkills())
+        }
+        val linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        binding.skills.characteristicOptions.apply {
+            adapter = skillsAdapter
+            layoutManager = linearLayoutManager
+            setHasFixedSize(true)
+        }
     }
 
     private fun fillOptionsSpinner() {
         binding.bodyType.optionsSpinner.attachDataSource(getArrayFromResources(R.array.body_type_options))
         binding.hairColor.optionsSpinner.attachDataSource(getArrayFromResources(R.array.hair_color_options))
         binding.eyeColor.optionsSpinner.attachDataSource(getArrayFromResources(R.array.eye_color_options))
-        binding.skills.optionsSpinner.attachDataSource(getArrayFromResources(R.array.skills_options))
     }
 
     private fun getArrayFromResources(resourceId: Int): List<String> {
@@ -62,14 +111,41 @@ class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
         val datePickerDialog = SlideDatePickerDialog.Builder()
             .setThemeColor(ResourcesCompat.getColor(resources, R.color.purple_700, null))
             .build()
-        datePickerDialog.show(parentFragmentManager, DATE_PICKER_TAG)
+        datePickerDialog.show(childFragmentManager, DATE_PICKER_TAG)
     }
 
     override fun onPositiveClick(day: Int, month: Int, year: Int, calendar: Calendar) {
-        binding.dobHolder.setText(getString(R.string.date_pattern, day, month, year))
+        binding.dobHolder.setText(SimpleDateFormat(DOB_TEXT_PATTERN, Locale.getDefault()).format(calendar.time))
+    }
+
+    override fun onDestroyView() {
+        saveUser()
+        super.onDestroyView()
+    }
+
+    private fun saveUser() {
+        if (userLogined)
+            profileViewModel.updateUserInfo(collectUserInfo())
+    }
+
+    private fun collectUserInfo(): User {
+        val user = User()
+        user.apply {
+            fullName = binding.fullNameEditText.text.toString()
+            userEmail = binding.emailEditText.text.toString()
+            dob = binding.dobHolder.text.toString()
+            country = binding.country.optionsSpinner.selectedIndex
+            height = binding.height.optionsSpinner.selectedIndex
+            weight = binding.weight.optionsSpinner.selectedIndex
+            bodyType = binding.bodyType.optionsSpinner.selectedIndex
+            hairColor = binding.hairColor.optionsSpinner.selectedIndex
+            eyeColor = binding.eyeColor.optionsSpinner.selectedIndex
+        }
+        return user
     }
 
     companion object {
         private const val DATE_PICKER_TAG = "date-picker"
+        private const val DOB_TEXT_PATTERN = "dd/MM/yyyy"
     }
 }

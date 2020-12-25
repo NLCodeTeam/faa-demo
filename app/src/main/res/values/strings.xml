@@ -30,7 +30,6 @@
     <string name="tap_to_choose_your_dob">Tap to choose your DOB</string>
     <string name="dob">Date of birth</string>
     <string name="set_your_dob">Set your DOB</string>
-    <string name="date_pattern">%1d/%2d/%3d</string>
     <string name="country">Country</string>
     <string name="height">Height</string>
     <string name="weight">Weight</string>
@@ -38,40 +37,53 @@
     <string name="hair_color">Hair color</string>
     <string name="eye_color">Eye color</string>
     <string name="skills">Skills</string>
+    <string name="profile_edit_error">Unable to edit profile in Guest mode\nPlease, log in or sign up</string>
+
     <string-array name="options">
-        <item>None</item>
+        <item>Unselected</item>
         <item>First option</item>
         <item>Second option</item>
         <item>Third option</item>
     </string-array>
+
     <string-array name="hair_color_options">
-        <item>None</item>
-        <item>Bald</item>
-        <item>Silver/Grey</item>
-        <item>Red</item>
+        <item>Unselected</item>
         <item>Black</item>
         <item>Blonde</item>
+        <item>Red</item>
+        <item>Hasel</item>
+        <item>Silver/Grey</item>
+        <item>Bald</item>
     </string-array>
+
     <string-array name="eye_color_options">
-        <item>None</item>
+        <item>Unselected</item>
         <item>Dark</item>
         <item>Hasel</item>
         <item>Green</item>
         <item>Gray</item>
         <item>Blue</item>
     </string-array>
+
     <string-array name="body_type_options">
-        <item>None</item>
+        <item>Unselected</item>
         <item>Regular</item>
         <item>Slim</item>
-        <item>Muscular</item>
+        <item>Hefty</item>
         <item>Athletic</item>
+        <item>Muscular</item>
     </string-array>
+
     <string-array name="skills_options">
-        <item>None</item>
         <item>Dancing</item>
         <item>Music skills</item>
         <item>Singing</item>
-        <item>skating</item>
+        <item>Acrobatics</item>
+        <item>Material arts</item>
+        <item>Mimicking</item>
+        <item>Horseback</item>
+        <item>Riding</item>
+        <item>Skating/rollerblading/BMX</item>
     </string-array>
+
 </resources>

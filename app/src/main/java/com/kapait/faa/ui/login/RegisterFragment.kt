@@ -12,8 +12,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.kapait.faa.FaaApplication
 import com.kapait.faa.MainActivity
 import com.kapait.faa.R
+import com.kapait.faa.models.User
 
 
 class RegisterFragment : Fragment() {
@@ -63,10 +65,8 @@ class RegisterFragment : Fragment() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    context?.run {
-                        email.saveEmail(this)
-                        password.savePassword(this)
-                    }
+
+                    (activity as LoginActivity).saveUser(email, password)
                     Log.e("Task Message", "Successful..")
                     val mainActivity = Intent(context, MainActivity::class.java).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
