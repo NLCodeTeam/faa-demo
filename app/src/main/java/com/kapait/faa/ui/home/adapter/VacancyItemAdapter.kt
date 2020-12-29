@@ -3,13 +3,11 @@ package com.kapait.faa.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Timestamp
 import com.kapait.faa.R
 import com.kapait.faa.ui.home.Vacancy
-import java.text.SimpleDateFormat
-import java.util.*
 
 class VacancyItemAdapter(private val vacancies: List<Vacancy>,private val listener: OnItemClickListener<Vacancy>) : RecyclerView.Adapter<VacancyHolder>() {
 
@@ -40,6 +38,7 @@ class VacancyHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     val jobTypeView = itemView.findViewById<TextView>(R.id.item_job_type)
     val publishDateView = itemView.findViewById<TextView>(R.id.item_publish_date)
     val typeView = itemView.findViewById<TextView>(R.id.item_type)
+    val favoriteIcon = itemView.findViewById<ImageView>(R.id.img_favorite)
 
     fun bind(vacancy: Vacancy?) {
         if (vacancy != null) {
@@ -50,6 +49,8 @@ class VacancyHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             jobTypeView.text = vacancy.vacancyTypeId
             publishDateView.text = vacancy.publicationDateTime
             typeView.text = "Jobs"
+            if (adapterPosition % 2 == 0)
+                favoriteIcon.setImageResource(R.drawable.star_filled)
         }
     }
 
