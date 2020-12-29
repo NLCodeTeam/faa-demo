@@ -1,9 +1,11 @@
 package com.kapait.faa.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +29,7 @@ class DetailsFragment : Fragment() {
     private lateinit var location: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CharacteristicItemAdapter
+    private lateinit var respondBtn: Button
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,9 +45,24 @@ class DetailsFragment : Fragment() {
         location = root.findViewById(R.id.location)
         recyclerView = root.findViewById(R.id.characteristic_list)
         characteristicOptions = root.findViewById(R.id.characteristic_options)
+        respondBtn = root.findViewById(R.id.btnSave)
 
 
         return root
+    }
+
+    private fun createAlertDialog() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("")
+        builder.setMessage("By applying for the job you take responsibility for being available " +
+                "at the time mentioned in the job description")
+        builder.setPositiveButton("Cancel") {dialog, i ->
+
+        }
+        builder.setNegativeButton("Ok") {dialog, i ->
+
+        }
+        builder.show()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,6 +70,10 @@ class DetailsFragment : Fragment() {
         vacancy = arguments?.getSerializable(Const.VACANCY) as Vacancy?
         vacancy?.let { initViews(it) }
         activity?.actionBar?.setDisplayHomeAsUpEnabled(true);
+        respondBtn.setOnClickListener{
+            createAlertDialog()
+        }
+
 
     }
 

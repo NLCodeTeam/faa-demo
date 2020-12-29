@@ -108,6 +108,8 @@
         android:textSize="@dimen/txtSizeMD"
         android:layout_marginTop="@dimen/paddingXS"
         android:textColor="@color/design_default_color_primary"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/item_date"
         app:layout_constraintTop_toBottomOf="@+id/item_description"
