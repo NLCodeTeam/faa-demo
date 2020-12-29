@@ -43,7 +43,7 @@ class VacancyHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bind(vacancy: Vacancy?) {
         if (vacancy != null) {
             titleView.text = vacancy.title
-            currencyView.text = vacancy.compensation.toInt().toString()
+            currencyView.text = "¥ ${vacancy.compensation.toInt().toString()}"
             descriptionView.text = vacancy.details
             dateView.text = getDate(vacancy)
             jobTypeView.text = vacancy.vacancyTypeId
