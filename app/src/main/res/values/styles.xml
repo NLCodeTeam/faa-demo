@@ -28,5 +28,18 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/item_option_background</item>
     </style>
+    <style name="BlueButton" parent="BaseButton">
+        <item name="android:background">@drawable/blue_button_bg</item>
+        <item name="android:textColor">@color/blue_button_text_color</item>
+    </style>
 
+    <style name="BaseButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/txtSizeMD</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">@dimen/paddingMD</item>
+        <item name="android:paddingEnd">@dimen/paddingMD</item>
+        <item name="android:paddingTop">@dimen/paddingSM</item>
+        <item name="android:paddingBottom">@dimen/paddingSM</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

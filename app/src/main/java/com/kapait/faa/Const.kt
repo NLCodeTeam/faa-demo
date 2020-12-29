@@ -4,6 +4,7 @@ package com.kapait.faa
 
 object Const {
 
+    const val VACANCY = "vacancy"
     const val data = "data"
     const val title = "title"
     const val verificationId = "verificationId"

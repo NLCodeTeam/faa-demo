@@ -6,17 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <com.kapait.faa.ui.home.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/img_filters"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+   <ImageView
+        android:id="@+id/img_filters"
+        android:layout_width="@dimen/paddingXXXL"
+        android:layout_height="@dimen/paddingXXXL"
+        android:layout_marginEnd="@dimen/paddingXS"
+        android:src="@drawable/ic_filter_24"
+        app:layout_constraintBottom_toBottomOf="@+id/search_view"
+        app:layout_constraintLeft_toRightOf="@id/search_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/filters_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_margin="@dimen/paddingXS"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintTop_toBottomOf="@id/search_view">
+
+        <TextView
+            android:id="@+id/filter_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/paddingSM"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/filter_all" />
+
+        <TextView
+            android:id="@+id/filter_jobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/paddingSM"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/filter_jobs" />
+
+        <TextView
+            android:id="@+id/filter_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="@dimen/paddingSM"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/filter_news" />
+
+        <TextView
+            android:id="@+id/filter_articles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/paddingSM"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/filter_articles" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vacancies_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/paddingXS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/filters_bar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

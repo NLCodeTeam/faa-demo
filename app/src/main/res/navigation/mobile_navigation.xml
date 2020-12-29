@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.kapait.faa.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_contracts"
@@ -22,4 +26,8 @@
         android:name="com.kapait.faa.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.kapait.faa.ui.home.DetailsFragment"
+        android:label="DetailsFragment" />
 </navigation>

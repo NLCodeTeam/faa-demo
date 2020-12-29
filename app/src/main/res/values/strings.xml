@@ -38,6 +38,14 @@
     <string name="eye_color">Eye color</string>
     <string name="skills">Skills</string>
     <string name="profile_edit_error">Unable to edit profile in Guest mode\nPlease, log in or sign up</string>
+    <string name="filter_all"><u>All</u></string>
+    <string name="filter_jobs"><u>Jobs</u></string>
+    <string name="filter_news"><u>News</u></string>
+    <string name="filter_articles"><u>Articles</u></string>
+    <string name="currency_symbol">¥</string>
+    <string name="text">Требуется играть недоразвитого дебила соседа, который будет  периодически встречаться на лестнице и входить-выходить из двери.  В некоторых сериях заходить за чем-нибудь.  Требование к притендентам: Убедительно играть дебилов!</string>
+    <string name="country_label">Country</string>
+    <string name="respond">Respond</string>
 
     <string-array name="options">
         <item>Unselected</item>

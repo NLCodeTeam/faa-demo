@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/paddingXXXL"
+        android:layout_marginStart="@dimen/paddingSM"
+        android:layout_marginEnd="@dimen/paddingSM"
+        android:layout_marginTop="@dimen/paddingXXS"
+        android:layout_marginBottom="@dimen/paddingXXS"
+        android:background="@drawable/search_bg"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="@dimen/paddingLG"
+            android:layout_height="@dimen/paddingLG"
+            android:layout_gravity="end|center_vertical"
+            android:layout_margin="@dimen/paddingXS"
+            android:background="@drawable/ic_search_24" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/paddingXS"
+            android:layout_weight="4"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="#0e0e0e"
+            android:textColorHint="#b0c6ce"
+            android:textSize="@dimen/txtSizeMD" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="@dimen/paddingLG"
+            android:layout_height="@dimen/paddingLG"
+            android:layout_gravity="end|center_vertical"
+            android:layout_margin="@dimen/paddingXS"
+            android:background="@drawable/ic_cancel_24" />
+    </LinearLayout>
+
+
+</LinearLayout>
