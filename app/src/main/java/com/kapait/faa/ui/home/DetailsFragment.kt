@@ -58,7 +58,7 @@ class DetailsFragment : Fragment() {
     private fun initViews(vacancy: Vacancy) {
       //  homeViewModel.loadSkills(vacancy.)
         titleView.text = vacancy.title
-        currencyView.text = vacancy.compensation.toInt().toString()
+        currencyView.text = "¥ ${vacancy.compensation.toInt()}"
         descriptionView.text = vacancy.details
         dateView.text = getDate(vacancy)
         jobTypeView.text = vacancy.vacancyTypeId
