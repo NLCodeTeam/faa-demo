@@ -1,9 +1,11 @@
 package com.kapait.faa.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -78,8 +80,26 @@ class ProfileFragment: Fragment(), SlideDatePickerDialogCallback {
         binding.eyeColor.characteristicName.text = getString(R.string.eye_color)
         binding.skills.characteristicsName.text = getString(R.string.skills)
         binding.dobHolderContainer.setEndIconOnClickListener { showDatePicker() }
+        binding.userAvatar.setOnClickListener { setUserAvatar() }
         fillOptionsSpinner()
         initRecyclerView()
+    }
+
+    private fun setUserAvatar() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, 1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK) {
+            val imageUri = data?.data
+            binding.userAvatar.apply {
+                setImageURI(imageUri)
+                clipToOutline = true
+            }
+        }
     }
 
     private fun initRecyclerView() {

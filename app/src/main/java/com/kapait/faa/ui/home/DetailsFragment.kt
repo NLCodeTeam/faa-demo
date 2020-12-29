@@ -53,17 +53,20 @@ class DetailsFragment : Fragment() {
 
     private fun createAlertDialog() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("")
-        builder.setMessage("By applying for the job you take responsibility for being available " +
+        builder
+            .setTitle("")
+            .setMessage("By applying for the job you take responsibility for being available " +
                 "at the time mentioned in the job description")
-        builder.setPositiveButton("Cancel") {dialog, i ->
-
+            .setPositiveButton("Cancel") {dialog, i ->
+            dialog.dismiss()
         }
-        builder.setNegativeButton("Ok") {dialog, i ->
-
+            .setNegativeButton("Ok") {dialog, i ->
+            dialog.dismiss()
         }
-        builder.show()
+            .show()
+
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
